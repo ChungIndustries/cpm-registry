@@ -1,0 +1,11 @@
+{
+  "$schema": "https://cdn.scalar.com/schema/scalar-config.json",
+  "subdomain": "cpm-registry",
+  "references": [
+    {
+      "name": "API Reference",
+      "path": "./src/specification.yaml"
+    }
+  ],
+  "publishOnMerge": true
+}
