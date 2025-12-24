@@ -168,7 +168,7 @@ components:
       description: Package version (semantic version).
       schema:
         type: string
-        pattern: '^[0-9]+\\.[0-9]+\\.[0-9]+(-[A-Za-z0-9.-]+)?$'
+        pattern: '^[0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z0-9.-]+)?$'
         examples:
           - 1.0.0
   responses:
@@ -181,10 +181,7 @@ components:
           examples:
             badRequest:
               value:
-                status: 400
                 message: Invalid payload.
-                errors:
-                  - message: 'Invalid field'
     NotFound:
       description: Resource not found.
       content:
@@ -194,7 +191,6 @@ components:
           examples:
             notFound:
               value:
-                status: 404
                 message: Package not found.
     InternalServerError:
       description: Internal server error.
@@ -205,12 +201,11 @@ components:
           examples:
             internalServerError:
               value:
-                status: 500
                 message: Unexpected error occurred.
   schemas:
     Package:
       type: object
-      required: [name, author, versions]
+      required: [name, versions]
       properties:
         name:
           type: string
@@ -236,7 +231,7 @@ components:
                 tarball: https://registry.cpm.chungindustries.com/packages/example/1.0.0/dist/tarball
     PackageVersion:
       type: object
-      required: [name, author, version, dependencies, dist]
+      required: [name, version, dist]
       properties:
         name:
           type: string
@@ -261,7 +256,7 @@ components:
           $ref: '#/components/schemas/Dist'
     PackageVersionMetadata:
       type: object
-      required: [name, author, version, dependencies]
+      required: [name, version]
       properties:
         name:
           type: string
@@ -296,12 +291,8 @@ components:
             - https://registry.cpm.chungindustries.com/packages/example/1.0.0/dist/tarball
     Error:
       type: object
-      required: [status, message]
+      required: [message]
       properties:
-        status:
-          type: integer
-          description: HTTP status code.
-          example: 400
         message:
           type: string
           description: Human-readable message.
