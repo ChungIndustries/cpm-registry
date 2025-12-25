@@ -20,6 +20,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
+    "@semantic-release/exec": "^7.1.0",
     "@semantic-release/github": "^12.0.2",
     "@total-typescript/tsconfig": "^1.0.4",
     "@types/dotenv-parse-variables": "^2.0.3",
