@@ -1,13 +1,13 @@
 import { Documentation } from 'express-zod-api';
 import { routing } from './routing.js';
-import config, { env } from './config.js';
+import config from './config.js';
 import fs from 'node:fs';
 
 const specification = new Documentation({
   routing,
   config,
-  version: '1.0.0',
-  title: 'CPM Registry API',
+  version: '0.0.0-development',
+  title: 'CPM Registry',
   serverUrl: 'https://registry.cpm.chungindustries.com',
   tags: {
     Packages: {
@@ -20,4 +20,5 @@ specification.addDescription(
   'API for the CPM Registry, used by the Chung Package Manager (cpm) to host and distribute ComputerCraft-focused Lua packages.'
 );
 
-fs.writeFileSync(env.apiSpecPath, specification.getSpecAsYaml());
+const outputPath = process.env.API_SPEC_PATH ?? process.argv[2] ?? 'openapi.yaml';
+fs.writeFileSync(outputPath, specification.getSpecAsYaml());

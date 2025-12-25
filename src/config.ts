@@ -25,7 +25,6 @@ export const env = {
   hostname: parsedEnv.HOSTNAME as string,
   port: parsedEnv.PORT as number,
 
-  apiSpecPath: parsedEnv.API_SPEC_PATH as string,
   storageDir: parsedEnv.STORAGE_DIR as string,
 
   logToConsole: parsedEnv.LOG_TO_CONSOLE as boolean
