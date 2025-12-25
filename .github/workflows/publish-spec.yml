@@ -31,12 +31,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Write CI env file
+        run: |
+          cat <<'EOF' > .env.prod
+          HOSTNAME=0.0.0.0
+          PORT=3000
+          STORAGE_DIR=./storage
+          EOF
+
       - name: Generate API Specification
         env:
           NODE_ENV: production
-          HOSTNAME: 0.0.0.0
-          PORT: 3000
-          STORAGE_DIR: ./storage
         run: npm run gen-docs -- ./openapi.yaml
 
       - name: Compute release version (semantic-release dry run)
