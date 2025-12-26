@@ -26,8 +26,6 @@ export const env = {
   port: parsedEnv.PORT as number,
 
   storageDir: parsedEnv.STORAGE_DIR as string,
-
-  logToConsole: parsedEnv.LOG_TO_CONSOLE as boolean
 };
 
 const config = createConfig({
